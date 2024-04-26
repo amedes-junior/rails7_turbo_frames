@@ -1,0 +1,18 @@
+<div class="container">
+
+
+
+  <%= form_with url: users_path,
+                method: :get,
+                data: { turbo_frame: 'search',
+                        controller: 'search',
+                        action: 'keyup->search#perform' } do |f| %>
+    <h1> Pesquisar Users - Random <%=Random.new.rand(100)%></h1>
+    <%= f.text_field :query, value: params[:query] %>
+    <%=f.submit "Enviar"%>
+  <% end %>
+
+  <%= render 'users_table', users: @users %>
+
+</div>
+
